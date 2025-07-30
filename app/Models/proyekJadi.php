@@ -9,6 +9,8 @@ class ProyekJadi extends Model
 {
     use HasFactory;
 
+
+
     protected $table = 'proyek_jadi';
 
     protected $fillable = [
@@ -20,7 +22,7 @@ class ProyekJadi extends Model
     ];
 
 
-      public function tags()
+    public function tags()
     {
         return $this->hasMany(TagsProyek::class, 'proyek_jadi_id');
     }
