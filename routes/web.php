@@ -6,6 +6,7 @@ use App\Http\Controllers\LandingController;
 use App\Http\Controllers\PesananController;
 use App\Http\Controllers\ProyekJadiController;
 use App\Http\Controllers\TestimoniController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -56,6 +57,13 @@ Route::middleware(['auth'])->group(function () {
         Route::put('/proyek_jadi/{id}', [ProyekJadiController::class, 'update'])->name('admin.proyek.update');
         Route::delete('/proyek_jadi/{id}', [ProyekJadiController::class, 'destroy'])->name('admin.proyek.destroy');
 
+
+        Route::get('/user', [UserController::class, 'index'])->name('admin.user');
+        Route::get('/user/create', [UserController::class, 'create'])->name('admin.user.create');
+        Route::post('/user', [UserController::class, 'store'])->name('admin.user.store');
+        Route::get('/user/{id}/edit', [UserController::class, 'edit'])->name('admin.user.edit');
+        Route::put('/user/{id}', [UserController::class, 'update'])->name('admin.user.update');
+        Route::delete('/user/{id}', [UserController::class, 'destroy'])->name('admin.user.destroy');
 
 
         Route::post('/logout', [AuthController::class, 'logout'])->name('admin.logout');
