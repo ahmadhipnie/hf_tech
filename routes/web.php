@@ -30,6 +30,8 @@ Route::post('/login', [AuthController::class, 'login'])->name('login.submit');
 Route::post('/pesan', [LandingController::class, 'storePesanan'])->name('pesanan.store');
 
 
+Route::post('/pesan-proyek', [LandingController::class, 'storePesananJadi'])->name('pesan.proyek.store');
+
 Route::middleware(['auth'])->group(function () {
 
     Route::prefix('admin')->group(function () {

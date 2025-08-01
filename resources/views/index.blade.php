@@ -8,6 +8,8 @@
     <meta name="description" content="">
     <meta name="keywords" content="">
 
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+
     <!-- Favicons -->
     <link href="{{ asset('assets/img/favicon.png') }}" rel="icon">
     <link href="{{ asset('assets/img/apple-touch-icon.png') }}" rel="apple-touch-icon">
@@ -363,7 +365,7 @@
                 <h2>Proyek Siap Pakai</h2>
                 <p>Kami Punya Proyek Siap Pakai</p>
             </div>
-            <div class="row gy-5">
+            <div class="row gy-5 justify-content-center">
                 @foreach ($proyekJadi as $proyek)
                     <div class="col-xl-4 col-md-6 mx-2"> <!-- Tambahkan mx-2 di sini -->
                         <div class="card proyek-card shadow-lg border-0 h-100" data-aos="fade-up"
@@ -400,13 +402,62 @@
                                         class="fw-bold text-success ms-2">Rp{{ number_format($proyek->harga_diskon, 0, ',', '.') }}</span>
                                 </div>
                                 <p class="flex-grow-1">{{ $proyek->deskripsi_proyek }}</p>
-                                <a href="#order-now" class="btn btn-primary mt-2 w-100">Pesan Proyek Ini</a>
+                                <a href="#" class="btn btn-primary mt-2 w-100 btn-pesan-proyek"
+                                    data-jenis="{{ $proyek->jenis_proyek }}"
+                                    data-deskripsi="{{ $proyek->deskripsi_proyek }}"
+                                    data-nama="{{ $proyek->nama_proyek }}">
+                                    Pesan Proyek Ini
+                                </a>
                             </div>
                         </div>
                     </div>
                 @endforeach
             </div>
         </section>
+
+
+        <!-- Modal Pesan Proyek -->
+        <div class="modal fade" id="pesanProyekModal" tabindex="-1" aria-labelledby="pesanProyekModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog">
+                <form id="modal-order-form" method="POST" action="{{ route('pesan.proyek.store') }}">
+                    @csrf
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="pesanProyekModalLabel">Pesan Proyek Ini</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                aria-label="Tutup"></button>
+                        </div>
+                        <div class="modal-body">
+                            <input type="hidden" name="jenis_tugas" id="modal-jenis_tugas">
+                            <div class="mb-3">
+                                <label for="modal-deadline_tugas" class="form-label">Deadline</label>
+                                <input type="date" class="form-control" name="deadline_tugas"
+                                    id="modal-deadline_tugas" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="modal-email_pemesan" class="form-label">Email</label>
+                                <input type="email" class="form-control" name="email_pemesan"
+                                    id="modal-email_pemesan" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="modal-nomor_telepon" class="form-label">Nomor Telepon</label>
+                                <input type="text" class="form-control" name="nomor_telepon"
+                                    id="modal-nomor_telepon" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="modal-detail_tugas" class="form-label">Detail Tugas</label>
+                                <textarea class="form-control" name="detail_tugas" id="modal-detail_tugas" rows="3" required></textarea>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                            <button type="submit" class="btn btn-success">Kirim Pesanan</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
 
         <!-- Testimonials Section -->
         <section id="testimonials" class="testimonials section">
@@ -550,6 +601,8 @@
     <script src="{{ asset('assets/js/main.js') }}"></script>
 
 
+    <script src="{{ asset('assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+
 
 
     <script>
@@ -641,6 +694,24 @@
                     slidesPerView: 3
                 }
             }
+        });
+    </script>
+
+    <script>
+        document.querySelectorAll('.btn-pesan-proyek').forEach(function(btn) {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                // Isi field modal
+                document.getElementById('modal-jenis_tugas').value = btn.getAttribute('data-jenis');
+                document.getElementById('modal-detail_tugas').value = btn.getAttribute('data-deskripsi');
+                // Kosongkan input lain
+                document.getElementById('modal-deadline_tugas').value = '';
+                document.getElementById('modal-email_pemesan').value = '';
+                document.getElementById('modal-nomor_telepon').value = '';
+                // Tampilkan modal
+                var modal = new bootstrap.Modal(document.getElementById('pesanProyekModal'));
+                modal.show();
+            });
         });
     </script>
 </body>

@@ -56,4 +56,41 @@ class LandingController extends Controller
 
         return redirect($url);
     }
+
+
+    public function storePesananJadi(Request $request){
+         $request->validate([
+            'jenis_tugas' => 'required|string',
+            'deadline_tugas' => 'nullable|date',
+            'email_pemesan' => 'required|email',
+            'nomor_telepon' => 'required|string',
+            'detail_tugas' => 'required|string',
+        ]);
+
+        $pesanan = Pesanan::create([
+            'jenis_tugas' => $request->jenis_tugas,
+            'deadline_tugas' => $request->deadline_tugas,
+            'email_pemesan' => $request->email_pemesan,
+            'nomor_telepon' => $request->nomor_telepon,
+            'detail_tugas' => 'proyek sudah jadi : '.$request->detail_tugas,
+            'nama_pelanggan' => $request->nama_pelanggan ?? '-', // jika tidak ada input nama
+            'status' => 'pending',
+        ]);
+
+        $pesanan->save();
+
+        // Format pesan WhatsApp
+        $pesan = "Halo Admin, saya ingin memesan jasa:\n"
+            . "Jenis Tugas: {$request->jenis_tugas}\n"
+            . "Deadline: " . ($request->deadline_tugas ?: '-') . "\n"
+            . "Email: {$request->email_pemesan}\n"
+            . "No. HP: {$request->nomor_telepon}\n"
+            . "Detail: Proyek Sudah Jadi: {$request->detail_tugas}";
+
+        $wa_admin = '6282228455809'; // Ganti dengan nomor admin
+        $url = "https://wa.me/{$wa_admin}?text=" . urlencode($pesan);
+
+        return redirect($url);
+    }
+
 }
