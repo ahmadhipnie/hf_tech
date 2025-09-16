@@ -67,7 +67,7 @@ Route::middleware(['auth'])->group(function () {
         Route::put('/user/{id}', [UserController::class, 'update'])->name('admin.user.update');
         Route::delete('/user/{id}', [UserController::class, 'destroy'])->name('admin.user.destroy');
 
-
         Route::post('/logout', [AuthController::class, 'logout'])->name('admin.logout');
+
     });
 });

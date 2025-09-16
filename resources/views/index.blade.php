@@ -102,8 +102,10 @@
         }
 
         .testimonial-item {
-            min-height: 220px;
             opacity: 1 !important;
+            padding: 1.5rem;
+            min-height: 120px;
+
         }
 
         .testimonials-swiper .swiper-slide {
@@ -332,7 +334,8 @@
                                         <div class="mb-3">
                                             <label for="nomor_telepon" class="form-label">Nomor Telepon</label>
                                             <input type="text" class="form-control rounded-3" id="nomor_telepon"
-                                                name="nomor_telepon" required>
+                                                name="nomor_telepon" required maxlength="13" pattern="\d{10,13}"
+                                                title="Nomor telepon harus 10-13 digit angka">
                                         </div>
                                         <div class="text-center mt-4">
                                             <button class="btn btn-outline-secondary rounded-pill px-4 me-2"
@@ -443,10 +446,11 @@
                             <div class="mb-3">
                                 <label for="modal-nomor_telepon" class="form-label">Nomor Telepon</label>
                                 <input type="text" class="form-control" name="nomor_telepon"
-                                    id="modal-nomor_telepon" required>
+                                    id="modal-nomor_telepon" required maxlength="13" pattern="\d{10,13}"
+                                    title="Nomor telepon harus 10-13 digit angka">
                             </div>
                             <div class="mb-3">
-                                <label for="modal-detail_tugas" class="form-label">Detail Tugas</label>
+                                <label for="modal-detail_tugas" class="form-label">Request Custom</label>
                                 <textarea class="form-control" name="detail_tugas" id="modal-detail_tugas" rows="3" required></textarea>
                             </div>
                         </div>
@@ -707,11 +711,24 @@
                 // Kosongkan input lain
                 document.getElementById('modal-deadline_tugas').value = '';
                 document.getElementById('modal-email_pemesan').value = '';
-                document.getElementById('modal-nomor_telepon').value = '';
-                // Tampilkan modal
+                document.getElementById('modal-nomor_telepon').addEventListener('input', function(e) {
+                    // Hanya angka, maksimal 13 digit
+                    this.value = this.value.replace(/\D/g, '').slice(0, 13);
+                }); // Tampilkan modal
                 var modal = new bootstrap.Modal(document.getElementById('pesanProyekModal'));
                 modal.show();
             });
+        });
+    </script>
+
+    <script>
+        // Untuk form utama
+        document.getElementById('nomor_telepon').addEventListener('input', function(e) {
+            this.value = this.value.replace(/\D/g, '').slice(0, 13);
+        });
+        // Untuk modal
+        document.getElementById('modal-nomor_telepon').addEventListener('input', function(e) {
+            this.value = this.value.replace(/\D/g, '').slice(0, 13);
         });
     </script>
 </body>
