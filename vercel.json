@@ -41,12 +41,11 @@
         "APP_KEY": "base64:EP2YjiGISKGtch+ZUZ5LiNrDsBC9XY4DFPyeBFeC+cQ=",
 
         "DB_CONNECTION": "mysql",
-        "DB_HOST": "ebujz3.h.filess.io",
-        "DB_PORT": "61001",
-        "DB_DATABASE": "hftech_important",
-        "DB_USERNAME": "hftech_important",
-        "DB_PASSWORD": "ff48c12bfb032cfcd4fad4d675ee1859a4808745",
-
+        "DB_HOST": "pzvqnp.h.filess.io",
+        "DB_PORT": "3307",
+        "DB_DATABASE": "hf_tech_db_halfsaddle",
+        "DB_USERNAME": "hf_tech_db_halfsaddle",
+        "DB_PASSWORD": "8a92897ad484a523007ed6d42a11642f5e1fc29a",
         "APP_CONFIG_CACHE": "/tmp/config.php",
         "APP_EVENTS_CACHE": "/tmp/events.php",
         "APP_PACKAGES_CACHE": "/tmp/packages.php",

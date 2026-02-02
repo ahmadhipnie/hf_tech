@@ -19,36 +19,37 @@
 
 /* Global Colors - The following color variables are used throughout the website. Updating them here will change the color scheme of the entire website */
 :root {
-  --background-color: #ffffff; /* Background color for the entire website, including individual sections */
-  --default-color: #444444; /* Default color used for the majority of the text content across the entire website */
-  --heading-color: #012970; /* Color for headings, subheadings and title throughout the website */
-  --accent-color: #4154f1; /* Accent color that represents your brand on the website. It's used for buttons, links, and other elements that need to stand out */
-  --surface-color: #ffffff; /* The surface color is used as a background of boxed elements within sections, such as cards, icon boxes, or other elements that require a visual separation from the global background. */
+  --background-color: #0a0a0a; /* Background color for the entire website - elegant black */
+  --default-color: #e0e0e0; /* Default color used for the majority of the text content across the entire website */
+  --heading-color: #14b8a6; /* Color for headings - teal/toska */
+  --accent-color: #14b8a6; /* Accent color - teal/toska for buttons, links */
+  --surface-color: #1a1a1a; /* The surface color - dark gray for cards */
   --contrast-color: #ffffff; /* Contrast color for text, ensuring readability against backgrounds of accent, heading, or default colors. */
+  --accent-gradient: linear-gradient(135deg, #14b8a6 0%, #0d9488 50%, #06b6d4 100%); /* Teal gradient */
 }
 
 /* Nav Menu Colors - The following color variables are used specifically for the navigation menu. They are separate from the global colors to allow for more customization options */
 :root {
-  --nav-color: #012970;  /* The default color of the main navmenu links */
-  --nav-hover-color: #4154f1; /* Applied to main navmenu links when they are hovered over or active */
-  --nav-mobile-background-color: #ffffff; /* Used as the background color for mobile navigation menu */
-  --nav-dropdown-background-color: #ffffff; /* Used as the background color for dropdown items that appear when hovering over primary navigation items */
-  --nav-dropdown-color: #212529; /* Used for navigation links of the dropdown items in the navigation menu. */
-  --nav-dropdown-hover-color: #4154f1; /* Similar to --nav-hover-color, this color is applied to dropdown navigation links when they are hovered over. */
+  --nav-color: #e0e0e0;  /* The default color of the main navmenu links - light gray */
+  --nav-hover-color: #14b8a6; /* Applied to main navmenu links when they are hovered over or active - teal */
+  --nav-mobile-background-color: #1a1a1a; /* Used as the background color for mobile navigation menu - dark */
+  --nav-dropdown-background-color: #1a1a1a; /* Used as the background color for dropdown items - dark */
+  --nav-dropdown-color: #e0e0e0; /* Used for navigation links of the dropdown items in the navigation menu. */
+  --nav-dropdown-hover-color: #14b8a6; /* Similar to --nav-hover-color - teal */
 }
 
 /* Color Presets - These classes override global colors when applied to any section or element, providing reuse of the sam color scheme. */
 
 .light-background {
-  --background-color: #f9f9f9;
-  --surface-color: #ffffff;
+  --background-color: #121212;
+  --surface-color: #1a1a1a;
 }
 
 .dark-background {
   --background-color: #060606;
   --default-color: #ffffff;
-  --heading-color: #ffffff;
-  --surface-color: #252525;
+  --heading-color: #14b8a6;
+  --surface-color: #1a1a1a;
   --contrast-color: #ffffff;
 }
 
@@ -207,13 +208,14 @@ h6 {
 /* Index Page Header
 ------------------------------*/
 .index-page .header {
-  --background-color: rgba(255, 255, 255, 0);
+  --background-color: rgba(10, 10, 10, 0);
 }
 
 /* Index Page Header on Scroll
 ------------------------------*/
 .index-page.scrolled .header {
-  --background-color: #ffffff;
+  --background-color: #0a0a0a;
+  box-shadow: 0 2px 20px rgba(20, 184, 166, 0.15);
 }
 
 /*--------------------------------------------------------------
