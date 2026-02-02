@@ -951,7 +951,7 @@
                                 <div class="faq-content-wrapper">
                                     <h3>Apakah ada jatah revisi?</h3>
                                     <div class="faq-content">
-                                        <p>Ada. Maksimal 2x revisi</p>
+                                        <p>Ada kak, maksimal 2x revisi minor, contoh: mengubah warna, text, atau tambahan fungsional sederhana, kalau mau tambah fitur pilih menu custom ya</p>
                                     </div>
                                 </div>
                                 <i class="faq-toggle bi bi-chevron-down"></i>
